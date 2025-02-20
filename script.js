@@ -53,13 +53,23 @@ document.addEventListener('DOMContentLoaded', async function() {
             earthquakeContainer.innerHTML = ''; // コンテナをクリア
             data.forEach(quake => {
                 const quakeElement = document.createElement('div');
-                quakeElement.classList.add('earthquake-container');
+
+                // マグニチュードに応じてクラスを追加
+                const magnitude = quake.earthquake.hypocenter.magnitude;
+                if (magnitude <= 4.0) {
+                    quakeElement.classList.add('earthquake-container', 'magnitude-low');
+                } else if (magnitude <= 5.0) {
+                    quakeElement.classList.add('earthquake-container', 'magnitude-moderate');
+                } else if (magnitude <= 6.0) {
+                    quakeElement.classList.add('earthquake-container', 'magnitude-high');
+                } else {
+                    quakeElement.classList.add('earthquake-container', 'magnitude-severe');
+                }
 
                 const quakeInfo = document.createElement('div');
                 quakeInfo.classList.add('earthquake-info');
 
                 const date = new Date(quake.time).toLocaleString();
-                const magnitude = quake.earthquake.hypocenter.magnitude;
                 const place = quake.earthquake.hypocenter.name;
                 const depth = quake.earthquake.hypocenter.depth;
                 const latitude = quake.earthquake.hypocenter.latitude;

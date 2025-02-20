@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>津波情報表示</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .tsunami-container {
+            display: flex;
+            align-items: flex-start;
+            border: 2px solid #ddd; /* 枠線の太さを2ピクセルに設定 */
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            font-size: 1.3em; /* 文字のサイズを1.3emに設定 */
+        }
+        .tsunami-info {
+            flex: 1;
+        }
+        .map {
+            width: 820px; /* 横幅を820ピクセルに設定 */
+            height: 360px; /* 縦幅を360ピクセルに設定 */
+            margin-left: 20px;
+        }
+        .eew {
+            background-color: #ffdddd;
+            padding: 10px;
+            border: 1px solid red;
+            margin-bottom: 20px;
+            font-size: 1.3em; /* 文字のサイズを1.3emに設定 */
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .updated-time {
+            font-size: 1.3em; /* 更新時刻の文字サイズを1.3emに設定 */
+        }
+        .earthquake-container {
+            display: flex;
+            align-items: flex-start;
+            border: 2px solid #ddd;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            font-size: 1.3em; /* 文字のサイズを1.3emに設定 */
+        }
+        .earthquake-info {
+            flex: 1;
+        }
+        .header-tsunami {
+            margin-top: 0; /* 最新の津波情報の見出しの上の空白をなくす */
+        }
+    </style>
+</head>
+<body>
+    <div class="header header-tsunami">
+        <h1>最新の津波情報</h1>
+        <p id="tsunami-updated-time" class="updated-time"></p>
+    </div>
+    <div id="tsunami-container" class="eew"></div>
+    <div class="header">
+        <h1>直近の地震情報</h1>
+        <p id="earthquake-updated-time" class="updated-time"></p>
+    </div>
+    <div id="earthquake-container"></div>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
